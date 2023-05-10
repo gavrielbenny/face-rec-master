@@ -9,10 +9,11 @@ const createFormData = (photo, body) => {
   const data = new FormData();
 
   data.append("photo", {
-    name: 'test.jpg',
+    name: `${body.label}.jpg`,
     type: "image/jpeg",
     uri:
-      Platform.OS === "android" ? photo.uri : photo.uri.replace("file://", "")
+      Platform.OS === "android" ? photo.uri : photo.uri.replace("file://", ""),
+    
   });
 
   console.log(data)
@@ -32,7 +33,7 @@ const removeUnknowns = (matches) => {
 
 export default class App extends Component {
   state = {
-    host: "http://192.168.1.15:5000",
+    host: "http://192.168.1.16:5000",
     photo: null,
     label: "",
     modalVisible: false,
